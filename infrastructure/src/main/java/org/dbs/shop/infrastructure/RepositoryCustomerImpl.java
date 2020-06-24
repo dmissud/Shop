@@ -1,4 +1,4 @@
-package org.dbs.shop.infratructure;
+package org.dbs.shop.infrastructure;
 
 import org.dbs.shop.domain.Customer;
 import org.dbs.shop.domain.CustomerAllReadyExistException;
