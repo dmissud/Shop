@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  dbs.db_myshop:
+    image: postgres
+    ports:
+      - "5436:5432"
+    environment:
+      - POSTGRES_DB=db_shop
+      - POSTGRES_USER=users
+      - POSTGRES_PASSWORD=users
