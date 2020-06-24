@@ -3,9 +3,13 @@ package org.dbs.shop.infratructure;
 import org.dbs.shop.domain.Customer;
 import org.dbs.shop.domain.CustomerAllReadyExistException;
 import org.dbs.shop.domain.IRepositoryCustomer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class RepositoryCustomerImpl implements IRepositoryCustomer {
 
+    @Autowired
     ICustomerJpaRepository customerJpaRepository;
 
     @Override
