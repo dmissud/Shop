@@ -22,8 +22,9 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler {
     public static final String ERROR = "error";
     public static final String MESSAGE = "message";
     public static final String CODE = "code";
+
     @Autowired
-    MapperExceptionCode mapperExceptionCode;
+    private MapperExceptionCode mapperExceptionCode;
 
     @ExceptionHandler(ValueInstantiationException.class)
     public ResponseEntity<Object> handleValueInstantiationException(ValueInstantiationException ex, WebRequest request) {

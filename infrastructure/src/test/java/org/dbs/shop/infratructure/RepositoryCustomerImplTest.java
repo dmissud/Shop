@@ -1,17 +1,17 @@
 package org.dbs.shop.infratructure;
 
-import javassist.NotFoundException;
-import org.assertj.core.api.Assertions;
 import org.dbs.shop.domain.Customer;
 import org.dbs.shop.domain.IRepositoryCustomer;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -69,7 +69,7 @@ class RepositoryCustomerImplTest {
         Throwable thrown = catchThrowable(() -> {
             Customer customer = repositoryCustomer.findByName((OTHER_NOM_CUSTOMER));
         });
-        Assertions.assertThat(thrown).as("Try find a non existing customer").hasMessage("Customer Not Found : "+OTHER_NOM_CUSTOMER);
+        assertThat(thrown).as("Try find a non existing customer").hasMessage("Customer Not Found : "+OTHER_NOM_CUSTOMER);
 
     }
 
