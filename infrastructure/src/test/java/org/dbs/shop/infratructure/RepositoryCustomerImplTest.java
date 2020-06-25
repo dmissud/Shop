@@ -70,6 +70,15 @@ class RepositoryCustomerImplTest {
             Customer customer = repositoryCustomer.findByName((OTHER_NOM_CUSTOMER));
         });
         assertThat(thrown).as("Try find a non existing customer").hasMessage("Customer Not Found : "+OTHER_NOM_CUSTOMER);
+    }
+
+    @Test
+    @DisplayName("Try to Save a customers that allready exist and catch a exception")
+    void should_create_gave_a_exception_when_give_customer_All_ready_exist() {
+        Throwable thrown = catchThrowable(() -> {
+            repositoryCustomer.save(new Customer(NOM_CUSTOMER, PASSWORD));
+        });
+        assertThat(thrown).as("Try create a existing customer").hasMessage("Customer All Ready Exist : "+NOM_CUSTOMER);
 
     }
 
