@@ -8,37 +8,39 @@ import javax.persistence.Id;
 
 @Entity
 public class CustomerEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
 
-    private String userName;
-    private String password;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
 
-    public CustomerEntity() {
-    }
+	private String userName;
 
-    public Long getId() {
-        return Id;
-    }
+	private String password;
 
-    public void setId(Long id) {
-        Id = id;
-    }
+	public CustomerEntity() {
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public Long getId() {
+		return Id;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setId(final Long id) {
+		Id = id;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setUserName(final String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(final String password) {
+		this.password = password;
+	}
 }
