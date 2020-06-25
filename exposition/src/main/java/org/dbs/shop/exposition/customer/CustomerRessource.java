@@ -2,8 +2,6 @@ package org.dbs.shop.exposition.customer;
 
 import org.dbs.shop.application.customer.ICustomerManagement;
 import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.CustomerAllReadyExistException;
-import org.dbs.shop.domain.CustomerNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,27 +23,21 @@ public class CustomerRessource {
     @ResponseStatus(HttpStatus.OK)
     public void createCustomer(@NotNull @RequestBody CustomerDTO customerDTO) {
         if (customerDTO.getCustomerName() != null) {
-            try {
-                customerManagement.referenceCustomer(customerDTO.getCustomerName());
-            } catch (CustomerAllReadyExistException e) {
-                logger.error(e.getMessage());
-            }
+            customerManagement.referenceCustomer(customerDTO.getCustomerName());
+            logger.debug("Customers Create");
         }
     }
 
 
     @GetMapping("retrieve/{customerName}")
     public CustomerFullDTO retrieveCustomerBuName(@NotNull @PathVariable("customerName") String customerName) {
-        CustomerFullDTO customerFullDto = null;
-        try {
-            Customer customer = customerManagement.retrieveCustomerByName(customerName);
-            customerFullDto = new CustomerFullDTO();
-            customerFullDto.setCustomerName(customer.getName());
-            customerFullDto.setPassword(customer.getPassword());
+        CustomerFullDTO customerFullDto;
+        Customer customer = customerManagement.retrieveCustomerByName(customerName);
+        customerFullDto = new CustomerFullDTO();
+        customerFullDto.setCustomerName(customer.getName());
+        customerFullDto.setPassword(customer.getPassword());
+        logger.debug("Customers Retrieve");
 
-        } catch (CustomerNotFoundException e) {
-            logger.error(e.getMessage());
-        }
         return customerFullDto;
     }
 }

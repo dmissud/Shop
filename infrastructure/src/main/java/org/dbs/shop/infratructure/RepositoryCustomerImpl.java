@@ -1,9 +1,9 @@
 package org.dbs.shop.infratructure;
 
+import org.dbs.shop.domain.AllReadyExistException;
 import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.CustomerAllReadyExistException;
-import org.dbs.shop.domain.CustomerNotFoundException;
 import org.dbs.shop.domain.IRepositoryCustomer;
+import org.dbs.shop.domain.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ public class RepositoryCustomerImpl implements IRepositoryCustomer {
     ICustomerJpaRepository customerJpaRepository;
 
     @Override
-    public void save(Customer customer) throws CustomerAllReadyExistException {
+    public void save(Customer customer) {
 
         CustomerEntity customerEntity = customerJpaRepository.findByUserName(customer.getName());
         if (customerEntity == null) {
@@ -23,17 +23,17 @@ public class RepositoryCustomerImpl implements IRepositoryCustomer {
             customerEntity.setPassword(customer.getPassword());
             customerJpaRepository.save(customerEntity);
         } else {
-            throw new CustomerAllReadyExistException(customer.getName());
+            throw new AllReadyExistException("Customer All Ready Exist : " + customer.getName());
         }
 
     }
 
     @Override
-    public Customer findByName(String customerName) throws CustomerNotFoundException {
+    public Customer findByName(String customerName) {
         CustomerEntity customerEntity = customerJpaRepository.findByUserName(customerName);
         if (customerEntity != null) {
             return new Customer(customerEntity.getUserName(), customerEntity.getPassword());
         }
-        throw new CustomerNotFoundException(customerName);
+        throw new NotFoundException("Customer Not Found : " + customerName);
     }
 }

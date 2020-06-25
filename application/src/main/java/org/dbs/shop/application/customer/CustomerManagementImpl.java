@@ -2,8 +2,8 @@ package org.dbs.shop.application.customer;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.CustomerAllReadyExistException;
-import org.dbs.shop.domain.CustomerNotFoundException;
+import org.dbs.shop.domain.AllReadyExistException;
+import org.dbs.shop.domain.NotFoundException;
 import org.dbs.shop.domain.IRepositoryCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class CustomerManagementImpl implements ICustomerManagement {
     private IRepositoryCustomer repositoryCustomer;
 
     @Override
-    public void referenceCustomer(String customerName) throws CustomerAllReadyExistException {
+    public void referenceCustomer(String customerName) throws AllReadyExistException {
         // Creer un customer
         RandomStringUtils.randomAlphanumeric(10);
         Customer customer = new Customer(customerName, RandomStringUtils.randomAlphanumeric(10));
@@ -27,7 +27,7 @@ public class CustomerManagementImpl implements ICustomerManagement {
     }
 
     @Override
-    public Customer retrieveCustomerByName(String customerName) throws CustomerNotFoundException {
+    public Customer retrieveCustomerByName(String customerName) throws NotFoundException {
         // Reference un customer
 
         return repositoryCustomer.findByName(customerName);
