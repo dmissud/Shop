@@ -1,6 +1,6 @@
 package org.dbs.shop.common;
 
-import org.dbs.shop.domain.NotFoundException;
+import org.dbs.shop.domain.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

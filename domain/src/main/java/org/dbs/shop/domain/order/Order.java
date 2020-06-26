@@ -1,4 +1,4 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
+
+import org.dbs.shop.domain.Item;
+import org.dbs.shop.domain.customer.Customer;
 
 public class Order {
 
@@ -45,6 +48,14 @@ public class Order {
 
 	public int getNumber() {
 		return number;
+	}
+
+	public LocalDate getOrderDate() {
+		return orderDate;
+	}
+
+	public LocalDate getShipmentDate() {
+		return shipmentDate;
 	}
 
 	public List<Item> getItems() {

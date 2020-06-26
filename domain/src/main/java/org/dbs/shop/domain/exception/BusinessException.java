@@ -1,6 +1,8 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.exception;
 
 public abstract class BusinessException extends RuntimeException {
+
+	public static String ALREADY_EXIST_CODE = "ALREADYEXIST";
 
 	private String code;
 

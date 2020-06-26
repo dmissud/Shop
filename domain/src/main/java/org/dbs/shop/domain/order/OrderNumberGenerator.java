@@ -1,4 +1,4 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.order;
 
 import java.util.Random;
 

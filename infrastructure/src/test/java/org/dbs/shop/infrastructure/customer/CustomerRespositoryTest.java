@@ -1,11 +1,11 @@
-package org.dbs.shop.infrastructure;
+package org.dbs.shop.infrastructure.customer;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.CustomerAlreadyExistException;
-import org.dbs.shop.domain.IRepositoryCustomer;
-import org.dbs.shop.domain.NotFoundException;
+import org.dbs.shop.domain.customer.Customer;
+import org.dbs.shop.domain.customer.IRepositoryCustomer;
+import org.dbs.shop.domain.exception.CustomerAlreadyExistException;
+import org.dbs.shop.domain.exception.NotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +34,7 @@ public class CustomerRespositoryTest {
 	}
 
 	@Test
-	public void alreadyExistCustomerShouldBeFound() {
+	public void already_Exist_Customer_Should_Be_Found() {
 		// When
 		final Customer customer = repositoryCustomer.findByName("john doe");
 		// Then
@@ -42,13 +42,13 @@ public class CustomerRespositoryTest {
 	}
 
 	@Test(expected = NotFoundException.class) // then
-	public void findUnknownCustomerShouldFail() {
+	public void find_Unknown_Customer_Should_Fail() {
 		// When
 		repositoryCustomer.findByName("jane doe");
 	}
 
 	@Test(expected = CustomerAlreadyExistException.class) // then
-	public void createExistingCustomerShouldFail() throws CustomerAlreadyExistException {
+	public void create_Existing_Customer_Should_Fail() {
 		// Given for this test
 		final Customer customer = new Customer("john doe", "password");
 		// When

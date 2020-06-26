@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.dbs.shop.domain.customer.Customer;
+import org.dbs.shop.domain.order.Order;
 import org.junit.jupiter.api.Test;
 
 public class OrderTest {

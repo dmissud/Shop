@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.UnsupportedEncodingException;
 
 import org.dbs.shop.application.customer.ICustomerManagement;
-import org.dbs.shop.domain.Customer;
+import org.dbs.shop.domain.customer.Customer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

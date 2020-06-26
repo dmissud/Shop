@@ -7,11 +7,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.IRepositoryCustomer;
 import org.dbs.shop.domain.Item;
-import org.dbs.shop.domain.Order;
+import org.dbs.shop.domain.customer.Customer;
+import org.dbs.shop.domain.customer.IRepositoryCustomer;
 import org.dbs.shop.domain.order.IRepositoryOrder;
+import org.dbs.shop.domain.order.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

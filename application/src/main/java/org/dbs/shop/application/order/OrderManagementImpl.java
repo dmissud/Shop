@@ -3,12 +3,12 @@ package org.dbs.shop.application.order;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.IRepositoryCustomer;
 import org.dbs.shop.domain.Item;
-import org.dbs.shop.domain.Order;
-import org.dbs.shop.domain.OrderNumberGenerator;
+import org.dbs.shop.domain.customer.Customer;
+import org.dbs.shop.domain.customer.IRepositoryCustomer;
 import org.dbs.shop.domain.order.IRepositoryOrder;
+import org.dbs.shop.domain.order.Order;
+import org.dbs.shop.domain.order.OrderNumberGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +32,12 @@ public class OrderManagementImpl implements IOrderManagement {
 		}
 		repositoryOrder.save(order);
 		return order ;
+	}
+
+	@Override
+	public Order listCustomerOrders(final String customerName) {
+
+		return repositoryOrder.getCustomerOrders(customerName);
 	}
 
 }

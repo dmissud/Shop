@@ -1,9 +1,11 @@
 package org.dbs.shop.application.customer;
 
+import java.util.List;
+
 import org.apache.commons.lang3.RandomStringUtils;
-import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.CustomerAlreadyExistException;
-import org.dbs.shop.domain.IRepositoryCustomer;
+import org.dbs.shop.domain.customer.Customer;
+import org.dbs.shop.domain.customer.IRepositoryCustomer;
+import org.dbs.shop.domain.exception.CustomerAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +32,10 @@ public class CustomerManagementImpl implements ICustomerManagement {
 		// Reference un customer
 
 		return repositoryCustomer.findByName(customerName);
+	}
+
+	@Override
+	public List<Customer> listCustomers() {
+		return repositoryCustomer.listCustomers();
 	}
 }

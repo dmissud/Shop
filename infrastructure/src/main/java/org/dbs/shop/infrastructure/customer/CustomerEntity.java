@@ -1,5 +1,4 @@
-package org.dbs.shop.infrastructure;
-
+package org.dbs.shop.infrastructure.customer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,21 +10,25 @@ public class CustomerEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Long id;
 
 	private String userName;
 
 	private String password;
 
+	/**
+	 * Default constructor needed by Hibernate
+	 */
 	public CustomerEntity() {
+
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(final Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getUserName() {

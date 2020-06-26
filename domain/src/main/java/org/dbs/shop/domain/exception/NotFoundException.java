@@ -1,4 +1,4 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.exception;
 
 public class NotFoundException extends BusinessException {
 
