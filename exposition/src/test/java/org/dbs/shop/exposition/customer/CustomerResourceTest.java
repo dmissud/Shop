@@ -36,6 +36,9 @@ public class CustomerResourceTest {
 	@MockBean
 	private ICustomerManagement customerManagement;
 
+	@MockBean
+	private CustomerDtoMapper customerMapper;
+
 	@Test
 	public void retrieveCustomerShouldSuccess() throws UnsupportedEncodingException, Exception {
 		// Given
@@ -43,7 +46,7 @@ public class CustomerResourceTest {
 		when(customerManagement.retrieveCustomerByName(any(String.class))).thenReturn(customer);
 
 		// When
-		final String result = mockmvc.perform(get("/customers/retrieve/{customerName}", CUSTOMER_NAME)//
+		final String result = mockmvc.perform(get("/api/customers/{customerName}", CUSTOMER_NAME)//
 				.accept(MediaType.APPLICATION_JSON))//
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
