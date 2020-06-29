@@ -2,6 +2,10 @@ package org.dbs.shop.exposition.order;
 
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "Item", description = "Item data")
 public class ItemDTO {
 
 	private String description;
@@ -10,6 +14,7 @@ public class ItemDTO {
 
 	private int quantity;
 
+	@ApiModelProperty(example = "Bananas", required = true, value = "Item description")
 	public String getDescription() {
 		return description;
 	}
@@ -18,6 +23,7 @@ public class ItemDTO {
 		this.description = description;
 	}
 
+	@ApiModelProperty(example = "1.5", required = true, value = "Item price")
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -26,6 +32,7 @@ public class ItemDTO {
 		this.price = price;
 	}
 
+	@ApiModelProperty(example = "2", required = true, value = "Item quantity")
 	public int getQuantity() {
 		return quantity;
 	}

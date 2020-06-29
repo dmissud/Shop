@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(value = "Order", description = "Order data")
 public class OrderDTO {
 
 	private int number;
