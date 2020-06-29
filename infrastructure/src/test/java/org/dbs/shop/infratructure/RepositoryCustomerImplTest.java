@@ -2,10 +2,10 @@ package org.dbs.shop.infratructure;
 
 import org.dbs.shop.domain.Customer;
 import org.dbs.shop.domain.IRepositoryCustomer;
+import org.dbs.shop.infratructure.customer.CustomerEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,8 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 @RunWith(SpringRunner.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DataJpaTest
+@DisplayName("Validation of the repository of Customers")
 class RepositoryCustomerImplTest {
 
     public static final String NOM_CUSTOMER = "Bob Lincoln";
@@ -75,9 +75,7 @@ class RepositoryCustomerImplTest {
     @Test
     @DisplayName("Try to Save a customers that allready exist and catch a exception")
     void should_create_gave_a_exception_when_give_customer_All_ready_exist() {
-        Throwable thrown = catchThrowable(() -> {
-            repositoryCustomer.save(new Customer(NOM_CUSTOMER, PASSWORD));
-        });
+        Throwable thrown = catchThrowable(() -> repositoryCustomer.save(new Customer(NOM_CUSTOMER, PASSWORD)));
         assertThat(thrown).as("Try create a existing customer").hasMessage("Customer All Ready Exist : "+NOM_CUSTOMER);
 
     }

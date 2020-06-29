@@ -1,4 +1,4 @@
-package org.dbs.shop.infratructure;
+package org.dbs.shop.infratructure.customer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

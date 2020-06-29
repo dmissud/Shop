@@ -2,7 +2,6 @@ package org.dbs.shop.exposition.customer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dbs.shop.application.customer.ICustomerManagement;
-import org.dbs.shop.common.ExceptionTranslator;
 import org.dbs.shop.common.MapperExceptionCode;
 import org.dbs.shop.domain.Customer;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,8 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest({CustomerRessource.class, MapperExceptionCode.class})
 class CustomerRessourceTest {
 
-
-    private static final String NOM_CUSTOMER = "Jhon Travolta";
+    private static final String NOM_CUSTOMER = "John Travolta";
     private static final String PASSWORD_CUSTOMER = "aBigPassword";
     private static final String NOM_NEW_CUSTOMER = "Ema Thurman";
 
@@ -52,9 +50,9 @@ class CustomerRessourceTest {
     @DisplayName("Find of a exiting customer")
     void retrieveCustomerByNameShouldSuccess() throws Exception {
         when(customerManagement.retrieveCustomerByName(any(String.class))).thenReturn(customer);
-
-        final String result = mockMvc.perform(MockMvcRequestBuilders.get("/customers/retrieve/{customerName}", NOM_CUSTOMER)
-                .accept(MediaType.APPLICATION_JSON))
+        
+        final String result =
+                mockMvc.perform(MockMvcRequestBuilders.get("/customers/retrieve/{customerName}", NOM_CUSTOMER).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -63,7 +61,7 @@ class CustomerRessourceTest {
     }
 
     @Test
-    void createCustomerShouldSucess() throws Exception {
+    void createCustomerShouldSuccess() throws Exception {
         final CustomerDTO customerDTO = new CustomerDTO(NOM_NEW_CUSTOMER);
         mockMvc.perform(MockMvcRequestBuilders.post("/customers/create")
                 .accept(MediaType.APPLICATION_JSON)

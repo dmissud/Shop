@@ -1,10 +1,13 @@
 package org.dbs.shop.application.customer;
 
 import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.AllReadyExistException;
-import org.dbs.shop.domain.NotFoundException;
+
+import java.util.List;
 
 public interface ICustomerManagement {
-    void referenceCustomer(String customerName) throws AllReadyExistException;
-    Customer retrieveCustomerByName(String customerName) throws NotFoundException;
+    Customer referenceCustomer(String customerName);
+
+    Customer retrieveCustomerByName(String customerName);
+
+    List<Customer> retrieveAllCustomers();
 }

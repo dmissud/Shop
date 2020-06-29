@@ -1,4 +1,4 @@
-package org.dbs.shop.infratructure;
+package org.dbs.shop.infratructure.customer;
 
 
 import javax.persistence.Entity;
@@ -10,20 +10,17 @@ import javax.persistence.Id;
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     private String userName;
     private String password;
 
-    public CustomerEntity() {
-    }
-
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getUserName() {

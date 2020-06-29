@@ -27,7 +27,7 @@ public class LoggingAspect {
             toLog.append(arg).append(", ");
         }
         toLog.append("]");
-        LOGGER.info(toLog.toString());
+        LOGGER.info("Aspect"+toLog.toString());
     }
 
     @Around("developerIsDoingSomething()")
@@ -35,7 +35,7 @@ public class LoggingAspect {
         long start = System.currentTimeMillis();
         Object output = pjp.proceed();
         long elapsedTime = System.currentTimeMillis() - start;
-        LOGGER.info("Method execution time: " + elapsedTime + " milliseconds.");
+        LOGGER.info("Aspect"+"Method execution time: " + elapsedTime + " milliseconds.");
         return output;
     }
 }

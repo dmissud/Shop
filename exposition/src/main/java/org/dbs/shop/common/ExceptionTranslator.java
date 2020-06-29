@@ -1,6 +1,7 @@
 package org.dbs.shop.common;
 
 import com.fasterxml.jackson.databind.exc.ValueInstantiationException;
+import lombok.extern.slf4j.Slf4j;
 import org.dbs.shop.domain.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @ControllerAdvice
+@Slf4j
 public class ExceptionTranslator extends ResponseEntityExceptionHandler {
 
     public static final String TIMESTAMP = "timestamp";
@@ -34,6 +36,7 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler {
         body.put(ERROR, "Command is not valid");
         String message = ex.getLocalizedMessage();
         body.put(MESSAGE, message.substring(message.indexOf("problem:")+9, message.indexOf('\n')));
+        log.error(body.toString());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
@@ -44,6 +47,7 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler {
         body.put(CODE, businessException.getCode());
         body.put(ERROR, "Business logic error");
         body.put(MESSAGE, businessException.getLocalizedMessage());
+        log.error(body.toString());
         return new ResponseEntity<>(body, mapperExceptionCode.mapCodeToHTTPCode(businessException.getCode()));
     }
 
@@ -54,6 +58,7 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler {
         body.put(STATUS, HttpStatus.INTERNAL_SERVER_ERROR);
         body.put(ERROR, "Unknow Exception");
         body.put(MESSAGE, ex.getLocalizedMessage());
+        log.error(body.toString());
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
