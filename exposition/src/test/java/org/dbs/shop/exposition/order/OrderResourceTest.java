@@ -44,7 +44,7 @@ public class OrderResourceTest {
 
 	@Test
 	@WithMockUser(roles = { "USER" }) // Given
-	public void simpleUserRetrievingOrderShouldSuccess() throws UnsupportedEncodingException, Exception {
+	public void simpleUserReferencingOrderShouldSuccess() throws UnsupportedEncodingException, Exception {
 		// When
 		final List<ItemDTO> request = new ArrayList<>();
 		request.add(new ItemDTO("apple", BigDecimal.valueOf(1.6), 2));
@@ -58,7 +58,7 @@ public class OrderResourceTest {
 
 	@Test
 	@WithMockUser(roles = { "ADMIN" }) // Given
-	public void adminUserRetrievingOrderShouldFail() throws Exception {
+	public void adminUserReferencingOrderShouldFail() throws Exception {
 		// When
 		final List<ItemDTO> request = new ArrayList<>();
 		mockmvc.perform(post("/api/customers/{customerName}/orders", CUSTOMER_NAME)//

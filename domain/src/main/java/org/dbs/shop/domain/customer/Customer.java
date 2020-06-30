@@ -15,7 +15,7 @@ public class Customer {
 		this.name = name;
 		this.password = password;
 		roles = new HashSet<>();
-		addRole(RoleTypeEnum.ROLE_USER);
+
 	}
 
 	public String getName() {

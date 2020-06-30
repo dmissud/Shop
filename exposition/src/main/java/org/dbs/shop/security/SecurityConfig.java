@@ -43,15 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
-		// http.httpBasic() //
-		// .and().authorizeRequests() //
-		// .antMatchers(HttpMethod.GET, "/api/*").hasRole("USER") //
-		// .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**",
-		// "/webjars/**").permitAll()
-		// .anyRequest().authenticated() //
-		// .and().csrf().disable() //
-		// .formLogin().disable();
-
 		http.csrf().disable()//
 		.formLogin()//
 		.loginProcessingUrl("/login").successHandler(new AuthentificationLoginSuccessHandler()) //
