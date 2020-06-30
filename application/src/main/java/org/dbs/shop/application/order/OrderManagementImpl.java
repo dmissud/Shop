@@ -35,7 +35,7 @@ public class OrderManagementImpl implements IOrderManagement {
 	}
 
 	@Override
-	public Order listCustomerOrders(final String customerName) {
+	public List<Order> listCustomerOrders(final String customerName) {
 
 		return repositoryOrder.getCustomerOrders(customerName);
 	}

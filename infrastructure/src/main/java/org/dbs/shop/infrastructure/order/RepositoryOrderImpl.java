@@ -1,5 +1,7 @@
 package org.dbs.shop.infrastructure.order;
 
+import java.util.List;
+
 import org.dbs.shop.domain.order.IRepositoryOrder;
 import org.dbs.shop.domain.order.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,8 @@ public class RepositoryOrderImpl implements IRepositoryOrder {
 	}
 
 	@Override
-	public Order getCustomerOrders(final String customerName) {
-		return mapper.mapToDomain(orderJpaRepository.findByCustomerUserName(customerName));
+	public List<Order> getCustomerOrders(final String customerName) {
+		return mapper.mapToDomainList(orderJpaRepository.findByCustomerUserName(customerName));
 	}
 
 }

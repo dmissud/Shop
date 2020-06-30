@@ -37,7 +37,6 @@ public class RepositoryOrderTest {
 	@Test
 	public void Save_order_with_Existing_Customer_Should_success() {
 		// Given
-
 		final CustomerEntity customerEntity = new CustomerEntity();
 		customerEntity.setUserName("john doe");
 		customerEntity.setPassword("password");

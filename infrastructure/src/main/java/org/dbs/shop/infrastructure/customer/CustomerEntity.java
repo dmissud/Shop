@@ -1,9 +1,17 @@
 package org.dbs.shop.infrastructure.customer;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.dbs.shop.domain.customer.RoleTypeEnum;
 
 @Entity
 public class CustomerEntity {
@@ -15,6 +23,10 @@ public class CustomerEntity {
 	private String userName;
 
 	private String password;
+
+	@ElementCollection
+	@Enumerated(EnumType.STRING)
+	private Set<RoleTypeEnum> roles = new HashSet<>();
 
 	/**
 	 * Default constructor needed by Hibernate
@@ -45,5 +57,13 @@ public class CustomerEntity {
 
 	public void setPassword(final String password) {
 		this.password = password;
+	}
+
+	public void setRoles(final Set<RoleTypeEnum> roles) {
+		this.roles = roles;
+	}
+
+	public Set<RoleTypeEnum> getRoles() {
+		return roles;
 	}
 }

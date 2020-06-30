@@ -14,6 +14,12 @@ public class ItemDTO {
 
 	private int quantity;
 
+	public ItemDTO(final String description, final BigDecimal price, final int quantity) {
+		this.description = description;
+		this.price = price;
+		this.quantity = quantity;
+	}
+
 	@ApiModelProperty(example = "Bananas", required = true, value = "Item description")
 	public String getDescription() {
 		return description;

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -40,7 +41,8 @@ public class CustomerResourceTest {
 	private CustomerDtoMapper customerMapper;
 
 	@Test
-	public void retrieveCustomerShouldSuccess() throws UnsupportedEncodingException, Exception {
+	@WithMockUser(roles = { "ADMIN" })
+	public void adminUserRetrievingCustomerShouldSuccess() throws UnsupportedEncodingException, Exception {
 		// Given
 		final Customer customer = new Customer(CUSTOMER_NAME, "password");
 		when(customerManagement.retrieveCustomerByName(any(String.class))).thenReturn(customer);
@@ -55,5 +57,16 @@ public class CustomerResourceTest {
 		// CustomerFullDTO.class);
 		// assertEquals(customerFullDTO.getCustomerName(), CUSTOMER_NAME);
 		assertEquals("{\"customerName\":\"John Doe\",\"password\":\"password\"}", result);
+	}
+
+	@Test
+	@WithMockUser(roles = { "USER" }) // Given
+	public void simpleUserRetrievingCustomerShouldFail() throws UnsupportedEncodingException, Exception {
+
+		// When
+		mockmvc.perform(get("/api/customers/{customerName}", CUSTOMER_NAME)//
+				.accept(MediaType.APPLICATION_JSON))//
+		.andExpect(status().isForbidden()); // then
+
 	}
 }

@@ -43,6 +43,13 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 		</dependency>
 
+		<!-- spring-security-test dependencies -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-test</artifactId>
+		    <scope>test</scope>
+		</dependency>
+
 		<!-- DevTools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

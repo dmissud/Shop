@@ -9,6 +9,6 @@ public interface IOrderManagement {
 
 	Order createOrder(String customerName, List<Item> items);
 
-	Order listCustomerOrders(String customerName);
+	List<Order> listCustomerOrders(String customerName);
 
 }
