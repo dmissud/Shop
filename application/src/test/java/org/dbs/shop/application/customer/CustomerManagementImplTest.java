@@ -1,8 +1,10 @@
 package org.dbs.shop.application.customer;
 
-import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.IRepositoryCustomer;
-import org.dbs.shop.domain.NotFoundException;
+import org.dbs.shop.domain.common.NotFoundException;
+import org.dbs.shop.domain.shop.Customer;
+import org.dbs.shop.domain.shop.IRepositoryCustomer;
+import org.dbs.shop.domain.user.RoleType;
+import org.dbs.shop.domain.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +24,7 @@ import static org.mockito.Mockito.when;
 class CustomerManagementImplTest {
 
     private static final String CUSTOMER_NAME = "John Travolta";
-    private static final String CUSTOMER_PASSWORD = "ABigPassword";
+    private static final String CUSTOMER_EMAIL = "ABigPassword@gmail.com";
     private static final String CUSTOMER_NAME_NOT_EXIST = "j'existe pas";
 
     @Autowired
@@ -35,14 +37,15 @@ class CustomerManagementImplTest {
 
     @BeforeEach
     void setUp() {
-        customer = new Customer(CUSTOMER_NAME, CUSTOMER_PASSWORD);
+        User user = new User(CUSTOMER_NAME, CUSTOMER_EMAIL, RoleType.ROLE_CUSTOMER);
+        customer = new Customer(10, user);
     }
 
     @Test
     @DisplayName("Create a new Customer and success")
     void should_i_correctly_create_customer_for_a_new_customer() {
         when(repositoryCustomer.findByName(CUSTOMER_NAME)).thenReturn(customer);
-        customerManagement.referenceCustomer(CUSTOMER_NAME);
+        customerManagement.referenceCustomer(CUSTOMER_NAME, CUSTOMER_EMAIL);
     }
 
     @Test
@@ -51,7 +54,7 @@ class CustomerManagementImplTest {
         when(repositoryCustomer.findByName(any(String.class))).thenReturn(customer);
         Customer customerSearch = customerManagement.retrieveCustomerByName(CUSTOMER_NAME);
 
-        assertThat(customerSearch.getPassword()).isEqualTo(CUSTOMER_PASSWORD);
+        assertThat(customerSearch.getEmail()).isEqualTo(CUSTOMER_EMAIL);
     }
 
     @Test

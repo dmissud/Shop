@@ -1,6 +1,6 @@
 package org.dbs.shop.infratructure.order;
 
-import org.dbs.shop.domain.Item;
+import org.dbs.shop.domain.shop.Item;
 import org.dbs.shop.infratructure.common.AbstractMapper;
 import org.springframework.stereotype.Component;
 

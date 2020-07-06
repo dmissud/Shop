@@ -12,12 +12,6 @@ public abstract class AbstractMapper<D, E> {
     public abstract D mapToDto(E entity);
 
     /**
-     * @param dto dto
-     * @return the mapped entity
-     */
-    public abstract E mapToDomain(D dto);
-
-    /**
      * @param domainList domain entity List
      * @return a List of the mapped dto
      */
@@ -25,11 +19,4 @@ public abstract class AbstractMapper<D, E> {
         return domainList.stream().filter(Objects::nonNull).map(this::mapToDto).collect(Collectors.toList());
     }
 
-    /**
-     * @param dtoList dtoList
-     * @return a List of the mapped domain entity
-     */
-    public List<E> mapToDomainList(final List<D> dtoList) {
-        return dtoList.stream().filter(Objects::nonNull).map(this::mapToDomain).collect(Collectors.toList());
-    }
 }

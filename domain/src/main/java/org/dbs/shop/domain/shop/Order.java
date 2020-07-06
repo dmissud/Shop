@@ -1,4 +1,4 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.shop;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

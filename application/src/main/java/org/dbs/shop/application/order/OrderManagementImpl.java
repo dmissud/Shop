@@ -1,6 +1,7 @@
 package org.dbs.shop.application.order;
 
-import org.dbs.shop.domain.*;
+import org.dbs.shop.domain.shop.*;
+import org.dbs.shop.domain.user.IRepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import java.util.List;
 public class OrderManagementImpl implements IOrderCreateUseCase, IGetOrderOfCustomerQuery {
 
     @Autowired
-    IRepositoryCustomer repositoryCustomer;
+    IRepositoryUser repositoryUser;
 
     @Autowired
     IRepositoryOrder repositoryOrder;
@@ -31,8 +32,8 @@ public class OrderManagementImpl implements IOrderCreateUseCase, IGetOrderOfCust
         }
         Order order = new Order(repositoryOrder.giveNextOrderNumber(), LocalDate.now(), items);
 
-        Customer customer = repositoryCustomer.findByName(placeOrderCmd.getCustomerName());
-        order.setCustomer(customer);
+        //Customer customer = repositoryUser.findByName(placeOrderCmd.getCustomerName());
+        //order.setCustomer(customer);
 
         repositoryOrder.save(order);
 

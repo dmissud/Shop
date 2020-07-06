@@ -4,7 +4,14 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.dbs.shop.application.order.IOrderCreateUseCase.PlaceItemCommand;
 import org.dbs.shop.application.order.IOrderCreateUseCase.PlaceOrderCommand;
-import org.dbs.shop.domain.*;
+import org.dbs.shop.domain.common.NotFoundException;
+import org.dbs.shop.domain.shop.Customer;
+import org.dbs.shop.domain.shop.IRepositoryCustomer;
+import org.dbs.shop.domain.shop.IRepositoryOrder;
+import org.dbs.shop.domain.shop.Order;
+import org.dbs.shop.domain.user.IRepositoryUser;
+import org.dbs.shop.domain.user.RoleType;
+import org.dbs.shop.domain.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,7 +49,8 @@ class OrderManagementImplTest {
 
     @BeforeEach
     void setUp() {
-        customer = new Customer(CUSTOMER_NAME, CUSTOMER_PASSWORD);
+        User user = new User(CUSTOMER_NAME, CUSTOMER_PASSWORD, RoleType.ROLE_CUSTOMER);
+        customer = new Customer(23, user);
     }
 
 

@@ -3,7 +3,9 @@ package org.dbs.shop.exposition.customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dbs.shop.application.customer.ICustomerManagement;
 import org.dbs.shop.common.MapperExceptionCode;
-import org.dbs.shop.domain.Customer;
+import org.dbs.shop.domain.shop.Customer;
+import org.dbs.shop.domain.user.RoleType;
+import org.dbs.shop.domain.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CustomerRessourceTest {
 
     private static final String NOM_CUSTOMER = "John Travolta";
-    private static final String PASSWORD_CUSTOMER = "aBigPassword";
+    private static final String EMAIL_CUSTOMER = "aBigPassword@gmail.com";
     private static final String NOM_NEW_CUSTOMER = "Ema Thurman";
 
 
@@ -43,7 +45,8 @@ class CustomerRessourceTest {
 
     @BeforeEach
     void setUp() {
-        customer = new Customer(NOM_CUSTOMER, PASSWORD_CUSTOMER);
+        User user = new User(NOM_CUSTOMER, EMAIL_CUSTOMER, RoleType.ROLE_CUSTOMER);
+        customer = new Customer();
     }
 
     @Test
@@ -57,7 +60,7 @@ class CustomerRessourceTest {
                 .andReturn().getResponse().getContentAsString();
 
         final CustomerFullDTO customerFullDTO = objectMapper.readValue(result, CustomerFullDTO.class);
-        assertThat(customerFullDTO.getPassword()).isEqualTo(PASSWORD_CUSTOMER);
+        assertThat(customerFullDTO.getPassword()).isEqualTo(EMAIL_CUSTOMER);
     }
 
     @Test

@@ -1,8 +1,9 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.shop;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
-import org.junit.jupiter.api.BeforeEach;
+import org.dbs.shop.domain.shop.Item;
+import org.dbs.shop.domain.shop.Order;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

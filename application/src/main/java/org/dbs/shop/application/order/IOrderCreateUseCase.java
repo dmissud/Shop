@@ -3,7 +3,7 @@ package org.dbs.shop.application.order;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import org.dbs.shop.application.common.SelfValidating;
-import org.dbs.shop.domain.Order;
+import org.dbs.shop.domain.shop.Order;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;

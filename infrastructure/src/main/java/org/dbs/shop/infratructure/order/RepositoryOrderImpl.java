@@ -1,10 +1,10 @@
 package org.dbs.shop.infratructure.order;
 
 import lombok.extern.slf4j.Slf4j;
-import org.dbs.shop.domain.IRepositoryOrder;
-import org.dbs.shop.domain.Item;
-import org.dbs.shop.domain.Order;
-import org.dbs.shop.infratructure.customer.ICustomerJpaRepository;
+import org.dbs.shop.domain.shop.IRepositoryOrder;
+import org.dbs.shop.domain.shop.Item;
+import org.dbs.shop.domain.shop.Order;
+import org.dbs.shop.infratructure.user.IUserJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +25,7 @@ public class RepositoryOrderImpl implements IRepositoryOrder {
     @Autowired
     private IOrderEntityJpaRepository orderEntityJpaRepository;
     @Autowired
-    private ICustomerJpaRepository customerJpaRepository;
+    private IUserJpaRepository customerJpaRepository;
     @Autowired
     private OrderEntityMapper orderEntityMapper;
 

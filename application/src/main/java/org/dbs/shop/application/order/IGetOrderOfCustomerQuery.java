@@ -1,6 +1,6 @@
 package org.dbs.shop.application.order;
 
-import org.dbs.shop.domain.Order;
+import org.dbs.shop.domain.shop.Order;
 
 import java.util.List;
 

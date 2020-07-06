@@ -1,6 +1,6 @@
 package org.dbs.shop.infratructure.order;
 
-import org.dbs.shop.infratructure.customer.CustomerEntity;
+import org.dbs.shop.infratructure.user.UserEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -20,13 +20,13 @@ public class OrderEntity {
     private List<ItemEntity> items;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private CustomerEntity customer;
+    private UserEntity customer;
 
-    public CustomerEntity getCustomer() {
+    public UserEntity getCustomer() {
         return customer;
     }
 
-    public void setCustomer(CustomerEntity customer) {
+    public void setCustomer(UserEntity customer) {
         this.customer = customer;
     }
 

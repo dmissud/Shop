@@ -1,19 +1,24 @@
-package org.dbs.shop.infratructure.customer;
+package org.dbs.shop.infratructure.user;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.dbs.shop.domain.user.RoleType;
+
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-public class CustomerEntity {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String userName;
     private String password;
+    private String email;
+
+    @ElementCollection
+    private List<RoleType> roles;
 
     public Long getId() {
         return id;
@@ -37,5 +42,21 @@ public class CustomerEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<RoleType> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleType> roles) {
+        this.roles = roles;
     }
 }

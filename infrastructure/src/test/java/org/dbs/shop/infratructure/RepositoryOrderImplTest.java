@@ -2,10 +2,12 @@ package org.dbs.shop.infratructure;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
-import org.dbs.shop.domain.Customer;
-import org.dbs.shop.domain.IRepositoryOrder;
-import org.dbs.shop.domain.Item;
-import org.dbs.shop.domain.Order;
+import org.dbs.shop.domain.shop.Customer;
+import org.dbs.shop.domain.shop.IRepositoryOrder;
+import org.dbs.shop.domain.shop.Item;
+import org.dbs.shop.domain.shop.Order;
+import org.dbs.shop.domain.user.RoleType;
+import org.dbs.shop.domain.user.User;
 import org.dbs.shop.infratructure.order.RepositoryOrderImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,13 +31,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RepositoryOrderImplTest {
 
     private static final String CUSTOMER_NAME = "Jhon Lennon";
-    private static final String CUSTOMER_PASSWORD = "bigPassword";
+    private static final String CUSTOMER_EMAIL = "bigPassword@email.glo";
     @Autowired
     IRepositoryOrder repositoryOrder;
 
     @Autowired
     private TestEntityManager entityManager;
     private Customer customer;
+    private User user;
     private Order order;
 
     @BeforeEach
@@ -54,7 +57,8 @@ class RepositoryOrderImplTest {
         order = new Order(RandomUtils.nextInt(1005, 10000000),
                 LocalDate.now(), items);
 
-        customer = new Customer(CUSTOMER_NAME, CUSTOMER_PASSWORD);
+        user = new User(CUSTOMER_NAME, CUSTOMER_EMAIL, RoleType.ROLE_CUSTOMER);
+        customer = new Customer(23, user);
     }
 
     @Test

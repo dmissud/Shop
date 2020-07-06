@@ -2,7 +2,7 @@ package org.dbs.shop.common;
 
 import com.fasterxml.jackson.databind.exc.ValueInstantiationException;
 import lombok.extern.slf4j.Slf4j;
-import org.dbs.shop.domain.BusinessException;
+import org.dbs.shop.domain.common.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

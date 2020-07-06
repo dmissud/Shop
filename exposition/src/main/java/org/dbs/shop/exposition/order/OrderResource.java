@@ -5,7 +5,7 @@ import org.dbs.shop.application.order.IGetOrderOfCustomerQuery;
 import org.dbs.shop.application.order.IOrderCreateUseCase;
 import org.dbs.shop.application.order.IOrderCreateUseCase.PlaceItemCommand;
 import org.dbs.shop.application.order.IOrderCreateUseCase.PlaceOrderCommand;
-import org.dbs.shop.domain.Order;
+import org.dbs.shop.domain.shop.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

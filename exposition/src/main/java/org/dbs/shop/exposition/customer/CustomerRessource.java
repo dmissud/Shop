@@ -1,9 +1,9 @@
 package org.dbs.shop.exposition.customer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.dbs.shop.application.customer.ICustomerManagement;
-import org.dbs.shop.domain.Customer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.dbs.shop.domain.shop.Customer;
+import org.dbs.shop.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class CustomerRessource {
-
-    private static Logger logger = LoggerFactory.getLogger(CustomerRessource.class);
 
     @Autowired
     ICustomerManagement customerManagement;
@@ -32,10 +31,10 @@ public class CustomerRessource {
     @PostMapping("/customers")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<URI> createCustomer(@NotNull @RequestBody CustomerDTO customerDTO) {
-        final Customer customer = customerManagement.referenceCustomer(customerDTO.getCustomerName());
-        logger.debug("Customers Create");
+        final Customer customer = customerManagement.referenceCustomer(customerDTO.getCustomerName(), customerDTO.getEmail());
+        log.debug("Customers Create");
         final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(customer.getName()).toUri();
+                .buildAndExpand(customer.getNumber()).toUri();
         return ResponseEntity.created(location).build();
     }
 
@@ -43,7 +42,7 @@ public class CustomerRessource {
     @GetMapping(value = "/customers/{customerName}", produces = {"application/json"})
     public CustomerFullDTO retrieveCustomerBuName(@NotNull @PathVariable("customerName") String customerName) {
         Customer customer = customerManagement.retrieveCustomerByName(customerName);
-        logger.debug("Customers Retrieve");
+        log.debug("Customers Retrieve");
 
         return customerFullDtoMapper.mapToDto(customer);
     }

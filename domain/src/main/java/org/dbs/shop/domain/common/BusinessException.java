@@ -1,4 +1,4 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.common;
 
 public abstract class BusinessException extends RuntimeException {
     public static final String NOT_FOUND = "BUSINESS_NOT_FOUND";

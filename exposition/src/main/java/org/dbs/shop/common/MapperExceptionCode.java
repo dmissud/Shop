@@ -1,6 +1,6 @@
 package org.dbs.shop.common;
 
-import org.dbs.shop.domain.BusinessException;
+import org.dbs.shop.domain.common.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 

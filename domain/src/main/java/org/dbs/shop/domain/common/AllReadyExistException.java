@@ -1,4 +1,4 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.common;
 
 public class AllReadyExistException extends BusinessException {
     public AllReadyExistException(String message) {

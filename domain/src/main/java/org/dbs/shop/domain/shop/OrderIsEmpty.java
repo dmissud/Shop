@@ -1,4 +1,6 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.shop;
+
+import org.dbs.shop.domain.common.BusinessException;
 
 public class OrderIsEmpty extends BusinessException {
     public OrderIsEmpty() {

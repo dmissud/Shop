@@ -1,7 +1,8 @@
-package org.dbs.shop.domain;
+package org.dbs.shop.domain.shop;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.data.Percentage;
+import org.dbs.shop.domain.shop.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
